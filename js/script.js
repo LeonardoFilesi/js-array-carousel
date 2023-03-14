@@ -7,9 +7,9 @@ for (let i = 0; i < imagesArray.lenght; i++) {
     const currentImage = imagesArray[i];
     
     const sliderItem = `
-    <div class="item">
-                    <img src="${currentImage}" alt="">
-                </div>`;
+        <div class="item">
+            <img src="${currentImage}" alt="">
+        </div>`;
 
     itemsContainer.innerHTML += sliderItem;
 }
@@ -33,20 +33,30 @@ nextBtn.addEventListener("click", function() {
 
     prevBtn.classList.remove("hidden");
     
-    if (activeItemIndex < itemsArray.lenght - 1) {
+// Primo tentativo
+    /* if (activeItemIndex < itemsArray.lenght - 1) {
         console.log('click');
         // rimuovere active
         itemsArray[activeItemIndex].classList.remove("active");
         //incremento
-        activeItemIndex++;
+        
         // aggiungo active
         itemsArray[activeItemIndex].classList.add("active");
         // Nascondo il bottone all'ultima slide
         if (activeItemIndex === itemsArray.lenght - 1) {
             nextBtn.classList.add("hidden");
         }
-    }
+    } */
+     itemsArray[activeItemIndex].classList.remove("active");
+    if(imagesArray === 4) {
+        currentImage === 0;
+    } else {
+        activeItemIndex++; 
+    } 
+    itemsArray[activeItemIndex].classList.add("active");
 });
+
+
 
 // Click sul bottone prev
 prevBtn.addEventListener("click", function () {
@@ -56,11 +66,11 @@ prevBtn.addEventListener("click", function () {
     }
     itemsArray[activeItemIndex].classList.remove("active");
 
-   /*  if() {
+    if() {
 
     } else {
-        
-    } */
-    activeItemIndex--;
+        activeItemIndex--;
+    } 
+    
     itemsArray[activeItemIndex].classList.add("active");
 });
