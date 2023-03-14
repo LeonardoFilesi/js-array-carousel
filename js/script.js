@@ -48,7 +48,7 @@ nextBtn.addEventListener("click", function() {
         }
     } */
      itemsArray[activeItemIndex].classList.remove("active");
-    if(imagesArray === 4) {
+    if(activeItemIndex === 4) {
         currentImage === 0;
     } else {
         activeItemIndex++; 
@@ -60,17 +60,12 @@ nextBtn.addEventListener("click", function() {
 
 // Click sul bottone prev
 prevBtn.addEventListener("click", function () {
-    nextBtn.classList.remove("hidden");
-    if (activeItemIndex === 0) {
-        prevBtn.classList.add("hidden");
-    }
+   
     itemsArray[activeItemIndex].classList.remove("active");
-
-    if() {
-
+    if(activeItemIndex === 0) {
+        currentImage === 4;
     } else {
         activeItemIndex--;
-    } 
-    
+    }
     itemsArray[activeItemIndex].classList.add("active");
 });
