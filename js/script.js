@@ -1,4 +1,4 @@
-const imagesArray = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg",];
+const imagesArray = ["img/01.jpg", "img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg",];
 
 const itemsContainer = document.querySelector(".slider-items");
 console.log(itemsContainer);
@@ -9,46 +9,39 @@ for (let i = 0; i < imagesArray.lenght; i++) {
     const sliderItem = `
     <div class="item">
                     <img src="${currentImage}" alt="">
-                </div>
-    `;
+                </div>`;
 
     itemsContainer.innerHTML += sliderItem;
 }
 
-// Stato di partenza: 
-let itemsArray = document.getElementsByClassName("item");
+// Partenza: 
+const itemsArray = document.getElementsByClassName("item");
 console.log(itemsArray);
 
-// imposto il primo slide visibile
 let activeItemIndex = 0;
 itemsArray[activeItemIndex].classList.add("active");
 
-
-// I bottoni
+// I bottoni:
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
 
-// Nascondo il primo bottone
+// Nascondo il bottone "prev"
 prevBtn.classList.add("hidden");
 
 // Click sul bottone next
 nextBtn.addEventListener("click", function() {
 
     prevBtn.classList.remove("hidden");
-
-    if (activeItemIndex < (itemsArray.lenght - 1)) {
-
+    
+    if (activeItemIndex < itemsArray.lenght - 1) {
+        console.log('click');
         // rimuovere active
         itemsArray[activeItemIndex].classList.remove("active");
-
         //incremento
         activeItemIndex++;
-
         // aggiungo active
         itemsArray[activeItemIndex].classList.add("active");
-
-        // Se arrivato all'ultimo slide
-        // Nascondo il bottone
+        // Nascondo il bottone all'ultima slide
         if (activeItemIndex === itemsArray.lenght - 1) {
             nextBtn.classList.add("hidden");
         }
@@ -56,16 +49,18 @@ nextBtn.addEventListener("click", function() {
 });
 
 // Click sul bottone prev
-prevBtn.addEventListener("click", function() {
-
+prevBtn.addEventListener("click", function () {
     nextBtn.classList.remove("hidden");
-
-    // rimuovere active dallo slide precedente
+    if (activeItemIndex === 0) {
+        prevBtn.classList.add("hidden");
+    }
     itemsArray[activeItemIndex].classList.remove("active");
 
-    // decrementare activeIndex
-    activeItemIndex--;
+   /*  if() {
 
-    // aggiungere active a quello nuovo
+    } else {
+        
+    } */
+    activeItemIndex--;
     itemsArray[activeItemIndex].classList.add("active");
 });
